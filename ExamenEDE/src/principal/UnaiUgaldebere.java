@@ -11,20 +11,21 @@ public class UnaiUgaldebere{
         
         Operaciones operaciones = new Operaciones();
        
-        System.out.print ("Operando 1: ");
-        operandos [0] = teclado.nextInt();
-        System.out.print ("Operando 2: ");
-        operandos [1] = teclado.nextInt();
+        pedirNumero(operandos);
            
-        System.out.print ("Operaciones [+, -, *, /, %]: ");
-        operacion = teclado.next();
-        while (!((operacion.equalsIgnoreCase("+")) || (operacion.equalsIgnoreCase("-")) ||
+        operacion = pedirOperacion();
+      
+        realizarOperacion(operacion, operandos, operaciones);    		 
+        	
+    }
+	public static void realizarOperacion(String operacion, int[] operandos, Operaciones operaciones) {
+		int resultado;
+		while (!((operacion.equalsIgnoreCase("+")) || (operacion.equalsIgnoreCase("-")) ||
                     (operacion.equalsIgnoreCase("*")) || (operacion.equalsIgnoreCase("/")) ||
                     (operacion.equalsIgnoreCase("%"))
                     ))
             	{
-            	 System.out.print ("Operaciones [+, -, *, /, %]: ");
-            	  operacion = teclado.next();
+            	 operacion = pedirOperacion();
             	}
         
                 if (operacion.equalsIgnoreCase("+")){
@@ -44,7 +45,18 @@ public class UnaiUgaldebere{
                     System.out.println ("Resultado: " + resultado);
                 } else {
                     System.out.println ("Operaci�n no v�lida");
-                }    		 
-        	
-    }
+                }
+	}
+	public static String pedirOperacion() {
+		String operacion;
+		System.out.print ("Operaciones [+, -, *, /, %]: ");
+        operacion = teclado.next();
+		return operacion;
+	}
+	public static void pedirNumero(int[] operandos) {
+		System.out.print ("Operando 1: ");
+        operandos [0] = teclado.nextInt();
+        System.out.print ("Operando 2: ");
+        operandos [1] = teclado.nextInt();
+	}
 }
